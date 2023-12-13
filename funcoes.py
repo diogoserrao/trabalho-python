@@ -13,6 +13,34 @@ def load(filename):
         return data
     
 
+def login(users):
+    email = input("Introduza o seu email:")
+    for user in users:
+        if str(email) == users["email"]:
+            print(create_menu)
+        if email == "admin@gmail.com":
+            palavraPass = input("Introdua a sua palavra pass:")
+            #vai verificar se a palavra pass introduzida é igual a que está guardada na lista de utilizadores em Admin
+            if palavraPass not in {"password"}: 
+                print("Palavra pass errada tente novamente")
+            if palavraPass == user["password"]:
+                print(menu_admin)
+    if email not in users:
+        adicionar_usuario
+        #adiciona o email a lista de users e v~e se é admin ou cliente
+
+def adicionar_usuario(users):
+    novo_email = input("Introduza o novo email:")
+    nova_senha = input("Introduza a nova senha:")
+    for user in users:
+        if user["email"] == novo_email:
+            print("Este email já está registrado. Tente novamente.")
+            return
+        
+    novo_usuario = {"email": novo_email, "password": nova_senha}
+    users.append(novo_usuario)
+    print("Utilizador registrado com sucesso!")    
+
     
 def make_reservation(user):
     
@@ -39,18 +67,18 @@ def create_menu(user):
     while True:
         print("\nMenu do Cliente:")
         print("1-Marcar Refeição")
-        print("Ver Historico")
-        print("Sair")
+        print("2-Ver Historico")
+        print("3-Sair")
 
         opcao = input("Escolha uma opção")
-        if opcao == 1:
-            print(make_reservaton)
-        elif opcao == 2:
-            print(see_historic)
-        elif opcao == 3:
+        if opcao == "1":
+            make_reservation
+        elif opcao == "2":
+            see_historic
+        elif opcao == "3":
             break
         else:
-            print("Opção invalida")    
+            print("Opção invalida")  
 
 def fatura(user):
     nome = input("indique o seu nome: ")
@@ -78,7 +106,7 @@ def menu_admin(admin):
         elif opcao == '2':
             close_day(admin)
         elif opcao == '3':
-            view_last_closing_days(admin)
+            view_closing_days(admin)
         elif opcao == '4':
             break
         else:
@@ -88,5 +116,5 @@ def close_days(admin):
    load("close_days.json")
 print(close_days)
 
-    
-       
+#def view_closing_days(filename):
+    #mostra o ficheiro dos dias fecho    
