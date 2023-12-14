@@ -12,6 +12,16 @@ def load(filename):
     else:
         return data
     
+def save(lista,filename):
+    try:
+        with open(filename,"w") as f:
+            json.dump(lista,f,indent=4)
+    except:
+        print("\n nao foi possivel abrir o ficheiro")       
+    else:
+        print("\nFicheiro escrito com sucesso!")
+
+    
 
 def login(users):
     email = input("Introduza o seu email:")
@@ -47,10 +57,9 @@ def make_reservation(user):
     data = input("Introduza a data no formato aaaa-mm-dd: ")
     hora = input("Horário previsto: ")
     dia = input("Introduza a hora prevista de chegada no formato hh:mm: ")
-    #se não estiver sobreposta pergunta quantas pessoas são
-    #if True :
-        #pessoas = input("Indique o numero de pessoas (max 12): ")
-        #criancas = input("INdique o numero de crianças: ")
+    save
+    
+
    
 
 def see_historic(user):
