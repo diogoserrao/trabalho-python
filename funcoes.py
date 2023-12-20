@@ -1,7 +1,5 @@
 import json
 
-
-
 def load(filename):
     try:
         with open(filename, 'r') as f:
@@ -23,8 +21,6 @@ def save(lista,filename):
 
 file_user= save("user.json")
 file_reservation= save("reservation.json")
-file_
-    
 
 def login(users,file_user):
     email = input("Introduza o seu email:")
@@ -53,23 +49,24 @@ def adicionar_usuario(users):
         if user["email"] == novo_email:
             print("Este email já está registrado. Tente novamente.")
             return
-        
+           
     novo_usuario = {"email": novo_email, "password": nova_senha}
     users.append(novo_usuario)
     print("Utilizador registrado com sucesso!")
-    save(lista,"user.json")    #corrigir 
+    save(users,"user.json")    #corrigir 
 
-    
 def make_reservation(user):
     
     data = input("Introduza a data no formato aaaa-mm-dd: ")
     hora = input("Horário previsto: ")
     dia = input("Introduza a hora prevista de chegada no formato hh:mm: ")
-    save(lista,"reservation.json")
-    
-
+    informacao = {"data":data,"hora":hora,"dia":dia}
+    save(informacao,"reservation.json")
+    while True:
+        adultos = input ("Quantos adultos são: ")
+        criancas = input ("Quantas crianças são: ")
+    #falta corrigir
    
-
 def see_historic(user):
     try:
         with open("historico.json", 'w') as f:
@@ -101,7 +98,6 @@ def fatura(user):
     nome = input("indique o seu nome: ")
     nif = input("Introduza o seu NIF: ")
 
-
 def menu_admin(admin):
      while True:
         print("\nMenu do Administrador:")
@@ -129,20 +125,28 @@ def menu_admin(admin):
         else:
             print("Opção inválida. Tente novamente.")
 #faz print das datas em que o rstaurante esta fechado 
+            
 def close_days(admin):
    load("close_days.json")
 print(close_days)
+
+def  total_close_day(adultos,criancas,admin):
+    adultostemp = 0
+    criancatemp = 0
+    adultostemp += adultos
+    criancatemp += criancas
+
+#vai as reservas e v~e quantos adultos e crianças foram e soma tudo 
 
 def view_closing_days(data,file_name):
     with open(file_name, 'w') as file:
         json.dump(data, file, indent=2)
 
-
     lista = [
     {'dia' : '1 de janeiro'},
     {'dia' : '25 de abril'},
     {'dia' : '25 de dezembro'}
-]
+    ]
 #por mais dias
-save_data(lista, "close_days.json")
-    #mostra o ficheiro dos dias fecho    
+    save_data(lista, "close_days.json")
+#mostra o ficheiro dos dias fecho    
