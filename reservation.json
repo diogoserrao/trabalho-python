@@ -1,19 +1,9 @@
 [
     {
-        "nome": "Diogo",
-        "nif": "2313123",
+        "nome": "diogo",
+        "nif": "12331",
         "data": "2023-12-23",
-        "hora": "19",
-        "dia": "18:30",
-        "adultos": 4,
-        "criancas": 2
-    },
-    {
-        "nome": "Aurelio",
-        "nif": "4124132",
-        "data": "2024-01-05",
-        "hora": "13",
-        "dia": "12:30",
+        "hora": "19:30",
         "adultos": 4,
         "criancas": 2
     }

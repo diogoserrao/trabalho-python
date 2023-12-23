@@ -19,11 +19,10 @@ def save(lista,filename):
     else:
         print("\nFicheiro escrito com sucesso!")
 
-#file_user = save(users,"user.json")
-
-
 def login(file_user):
     email = input("Introduza o seu email:")
+
+
     for user in file_user:
         if str(email) == user["email"]:
             create_menu(user)
@@ -40,13 +39,12 @@ def login(file_user):
     
 def adicionar_usuario(users):
     novo_email = input("Introduza o novo email:")
-    nova_senha = input("Introduza a nova senha:")
     for user in users:
         if user["email"] == novo_email:
             print("Este email já está registrado. Tente novamente.")
             return
            
-    novo_usuario = {"email": novo_email, "password": nova_senha}
+    novo_usuario = {"email": novo_email,}
     users.append(novo_usuario)
     print("Utilizador registrado com sucesso!")
     save(users,"user.json")    #corrigir 
@@ -55,20 +53,16 @@ def make_reservation(user):
     nome = input("Introduza o seu nome: ")
     nif = input("Introduza o seu NIF: ")
     data = input("Introduza a data no formato aaaa-mm-dd: ")
-    hora = input("Horário previsto: ")
-    dia = input("Introduza a hora prevista de chegada no formato hh:mm: ")
+    print("Horario: 18:00h as 23:00")
+    hora= input("Introduza a hora prevista de chegada no formato hh:mm: ")
     adultos = int(input ("Quantos adultos são: "))
     criancas = int(input ("Quantas crianças são: "))
-
-    #ler o ficheiro e adicionar a reserva
-    
+    #validar hora
     listReservations = load("reservation.json")
-    reserva = [{"nome":nome,"nif":nif,"data":data,"hora":hora,"dia":dia,"adultos":adultos,"criancas":criancas}]
+    reserva = [{"nome":nome,"nif":nif,"data":data,"hora":hora,"adultos":adultos,"criancas":criancas}]
     listReservations += reserva
     save(listReservations,"reservation.json")
 
-    
-   
 def show_history(user):
     listReservations = load("reservation.json")
     print(listReservations)
