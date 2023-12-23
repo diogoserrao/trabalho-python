@@ -19,14 +19,14 @@ def save(lista,filename):
     else:
         print("\nFicheiro escrito com sucesso!")
 
-file_user= save("user.json")
-file_reservation= save("reservation.json")
+#file_user = save(users,"user.json")
 
-def login(users,file_user):
+
+def login(file_user):
     email = input("Introduza o seu email:")
     for user in file_user:
-        if str(email) == users["email"]:
-            print(create_menu)
+        if str(email) == user["email"]:
+            create_menu(user)
         if email == "admin@gmail.com":
             palavraPass = input("Introdua a sua palavra pass:")
             #vai verificar se a palavra pass introduzida é igual a que está guardada na lista de utilizadores em Admin
@@ -37,11 +37,7 @@ def login(users,file_user):
     if email not in file_user:
         adicionar_usuario
         #adiciona o email a lista de users e ve se é admin ou cliente
-def save_data(data, file_user):
-    with open(file_user, 'w') as file:
-        json.dump(data, file, indent=2)
-save_data()
-
+    
 def adicionar_usuario(users):
     novo_email = input("Introduza o novo email:")
     nova_senha = input("Introduza a nova senha:")
@@ -60,12 +56,16 @@ def make_reservation(user):
     data = input("Introduza a data no formato aaaa-mm-dd: ")
     hora = input("Horário previsto: ")
     dia = input("Introduza a hora prevista de chegada no formato hh:mm: ")
-    informacao = {"data":data,"hora":hora,"dia":dia}
-    save(informacao,"reservation.json")
-    while True:
-        adultos = input ("Quantos adultos são: ")
-        criancas = input ("Quantas crianças são: ")
-    #falta corrigir
+    adultos = input ("Quantos adultos são: ")
+    criancas = input ("Quantas crianças são: ")
+    #ler o ficheiro e adicionar a reserva
+    
+    listReservations = load("reservation.json")
+    reserva = [{"data":data,"hora":hora,"dia":dia,"Adultos":adultos,"Criancas":criancas}]
+    listReservations += reserva
+    save(listReservations,"reservation.json")
+
+    
    
 def see_historic(user):
     try:
@@ -86,9 +86,9 @@ def create_menu(user):
 
         opcao = input("Escolha uma opção")
         if opcao == "1":
-            make_reservation
+            make_reservation(user)
         elif opcao == "2":
-            see_historic
+            see_historic(user)
         elif opcao == "3":
             break
         else:
