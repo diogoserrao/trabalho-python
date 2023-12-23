@@ -1,4 +1,4 @@
-from funcoes import login,adicionar_usuario,load,create_menu,make_reservation,see_historic,fatura,menu_admin,close_days,view_closing_days,conta
+from funcoes import login,adicionar_usuario,load,create_menu,make_reservation, show_history,fatura,menu_admin,close_days,view_closing_days,conta
 
 
 
@@ -14,7 +14,7 @@ user = listUsers[0]
 # adicionar_usuario(listUsers)
 #create_menu(user)
 #make_reservation(user)
-see_historic(user)
+show_history(user)
 #print(conta(2,2))
 # fatura(user)
 # menu_admin(admin)

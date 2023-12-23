@@ -69,7 +69,7 @@ def make_reservation(user):
 
     
    
-def see_historic(user):
+def show_history(user):
     listReservations = load("reservation.json")
     print(listReservations)
     for reserva in listReservations:
@@ -90,9 +90,6 @@ def conta(adultos,criancas):
     adultostemp = adultos * 25
     criancastemp = criancas * 12
     return adultostemp + criancastemp
-
-
-
 
 def create_menu(user):
     while True:
