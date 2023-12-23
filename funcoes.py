@@ -52,31 +52,48 @@ def adicionar_usuario(users):
     save(users,"user.json")    #corrigir 
 
 def make_reservation(user):
-    
+    nome = input("Introduza o seu nome: ")
+    nif = input("Introduza o seu NIF: ")
     data = input("Introduza a data no formato aaaa-mm-dd: ")
     hora = input("Horário previsto: ")
     dia = input("Introduza a hora prevista de chegada no formato hh:mm: ")
-    adultos = input ("Quantos adultos são: ")
-    criancas = input ("Quantas crianças são: ")
+    adultos = int(input ("Quantos adultos são: "))
+    criancas = int(input ("Quantas crianças são: "))
+
     #ler o ficheiro e adicionar a reserva
     
     listReservations = load("reservation.json")
-    reserva = [{"data":data,"hora":hora,"dia":dia,"Adultos":adultos,"Criancas":criancas}]
+    reserva = [{"nome":nome,"nif":nif,"data":data,"hora":hora,"dia":dia,"adultos":adultos,"criancas":criancas}]
     listReservations += reserva
     save(listReservations,"reservation.json")
 
     
    
 def see_historic(user):
-    try:
-        with open("historico.json", 'w') as f:
-            data =json.historico(f)
-    except:
-        print("\nErro: não foi possível abrir o ficheiro")
-        return[]
-    else:
-        return data
+    listReservations = load("reservation.json")
+    print(listReservations)
+    for reserva in listReservations:
+        print(100 * "*")
+        print()
+        print("Data: " + reserva['data'],"\tHora: " + reserva['hora'])
+        print()
+        totalpessoas = reserva['adultos'] + reserva['criancas']
+        print("Adultos: "+ str(reserva['adultos']),"\tCrianças: " + str(reserva['criancas']),"\tTotal de pessoas: " + str(totalpessoas) )
+        print("Nome: " + reserva['nome'], "\tNIF: "+ reserva['nif'])
+        print()
+        print("Total a pagar:" + str(conta(reserva['adultos'],reserva['criancas'])))
+        print()
     
+def conta(adultos,criancas):
+    adultostemp = 0
+    criancastemp = 0
+    adultostemp = adultos * 25
+    criancastemp = criancas * 12
+    return adultostemp + criancastemp
+
+
+
+
 def create_menu(user):
     while True:
         print("\nMenu do Cliente:")
