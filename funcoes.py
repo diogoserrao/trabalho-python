@@ -116,29 +116,32 @@ def menu_admin(admin):
         print("4. Sair")
 
         opcao = input("Escolha uma opção: ")
-        if opcao == '1':
+        if opcao == "1":
            print("Preço por Adulto: 25")
            print("Preço por Criança: 12.5")
            print("Ocupação Máxima: 64")
            print("Número de Mesas: 16")
            print("Dia de Folga: Quarta-Feira")
-           print("Prima uma tecla qualquer para voltar")
+           input("Prima uma tecla qualquer para voltar")
            #o programa devia voltar para cima a mostrar o menu de admin
 
         elif opcao == '2':
-            total_close_day(admin)
+            show_close_days()  
         elif opcao == '3':
-            view_closing_days(admin)
+            total_close_day(admin)
         elif opcao == '4':
             break
         else:
             print("Opção inválida. Tente novamente.")
 #faz print das datas em que o rstaurante esta fechado 
             
-def close_days(admin):
-   load("close_days.json")
-print(close_days)
-
+def show_close_days():
+    days = load("closedays.json")
+    print()
+    for dia in days:
+        print(dia)
+    input("Prima uma tecla qualquer para voltar")
+    
 def  total_close_day(adultos,criancas,admin):
     adultostemp = 0
     criancatemp = 0
@@ -151,11 +154,4 @@ def view_closing_days(data,file_name):
     with open(file_name, 'w') as file:
         json.dump(data, file, indent=2)
 
-    lista = [
-    {'dia' : '1 de janeiro'},
-    {'dia' : '25 de abril'},
-    {'dia' : '25 de dezembro'}
-    ]
-#por mais dias
-    save_data(lista, "close_days.json")
-#mostra o ficheiro dos dias fecho    
+    

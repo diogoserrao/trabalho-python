@@ -1,4 +1,4 @@
-from funcoes import login,adicionar_usuario,load,menu_client,make_reservation, show_history,fatura,menu_admin,close_days,view_closing_days,conta
+from funcoes import login,adicionar_usuario,load,menu_client,make_reservation, show_history,fatura,menu_admin,show_close_days,view_closing_days,conta
 
 
 
@@ -17,6 +17,6 @@ login()
 #show_history(user)
 # fatura(user)
 # menu_admin(admin)
-# close_days(admin)
+#show_close_days()
 # view_closing_days("close_days.json")
 #print(close_days(admin):)
