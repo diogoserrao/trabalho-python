@@ -19,35 +19,34 @@ def save(lista,filename):
     else:
         print("\nFicheiro escrito com sucesso!")
 
-def login(file_user):
+def login():
     email = input("Introduza o seu email:")
+    users = load("users.json")
+    userlogado = None
+    # se existe - mete na variavel user
+    for user in users:
+        if email == user["email"]:
+            userlogado = user 
+    if userlogado == None :
+        userlogado = adicionar_usuario(email,users)
 
 
-    for user in file_user:
-        if str(email) == user["email"]:
-            create_menu(user)
-        if email == "admin@gmail.com":
-            palavraPass = input("Introdua a sua palavra pass:")
-            #vai verificar se a palavra pass introduzida é igual a que está guardada na lista de utilizadores em Admin
-            if palavraPass not in {"password"}: 
-                print("Palavra pass errada tente novamente")
-            if palavraPass == user["password"]:
-                print(menu_admin)
-    if email not in file_user:
-        adicionar_usuario
+    create_menu(userlogado)
+    # if user["email"] == "admin@gmail.com":
+    #     palavraPass = input("Introdua a sua palavra pass:")
+    #     #vai verificar se a palavra pass introduzida é igual a que está guardada na lista de utilizadores em Admin
+    #     if palavraPass not in {"password"}: 
+    #         print("Palavra pass errada tente novamente")
+    #     if palavraPass == user["password"]:
+    #         print(menu_admin)
+
         #adiciona o email a lista de users e ve se é admin ou cliente
     
-def adicionar_usuario(users):
-    novo_email = input("Introduza o novo email:")
-    for user in users:
-        if user["email"] == novo_email:
-            print("Este email já está registrado. Tente novamente.")
-            return
-           
-    novo_usuario = {"email": novo_email,}
-    users.append(novo_usuario)
-    print("Utilizador registrado com sucesso!")
-    save(users,"user.json")    #corrigir 
+def adicionar_usuario(email,users):
+    user = {"email":email,"password":"","permission":"cliente"}
+    users += [user]
+    save(users,"users.json")
+    return user
 
 def make_reservation(user):
     nome = input("Introduza o seu nome: ")
@@ -96,7 +95,7 @@ def create_menu(user):
         if opcao == "1":
             make_reservation(user)
         elif opcao == "2":
-            see_historic(user)
+            show_history(user)
         elif opcao == "3":
             break
         else:

@@ -1,12 +1,17 @@
 [
-  {
-    "email": "aaa@aa.aa",
-    "password": "",
-    "permission": "client"
-  },
-  {
-    "email": "bbb@bb.bb",
-    "password": "bbbb",
-    "permission": "admin"
-  }
+    {
+        "email": "aaa@aa.aa",
+        "password": "",
+        "permission": "client"
+    },
+    {
+        "email": "bbb@bb.bb",
+        "password": "bbbb",
+        "permission": "admin"
+    },
+    {
+        "email": "diogo@gmail.com",
+        "password": "",
+        "permission": "cliente"
+    }
 ]
