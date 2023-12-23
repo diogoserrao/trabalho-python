@@ -32,12 +32,15 @@ def login():
     if userlogado["permission"] == "cliente":
         menu_client(userlogado)
     else:
-        palavraPass = input("Introdua a sua palavra pass:")
-        #vai verificar se a palavra pass introduzida é igual a que está guardada na lista de utilizadores em Admin
-        if palavraPass == userlogado["password"]: 
-            menu_admin(userlogado)
-        else: 
-            print("Palavra pass errada tente novamente")
+        palavraPass = ""
+        while palavraPass != userlogado["password"]:
+            palavraPass = input("Introdua a sua palavra pass:")
+            #vai verificar se a palavra pass introduzida é igual a que está guardada na lista de utilizadores em Admin
+            if palavraPass == userlogado["password"]: 
+                menu_admin(userlogado)
+            else: 
+                print("Palavra pass errada tente novamente")
+
 
         #adiciona o email a lista de users e ve se é admin ou cliente
     
