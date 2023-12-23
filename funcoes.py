@@ -29,16 +29,15 @@ def login():
             userlogado = user 
     if userlogado == None :
         userlogado = adicionar_usuario(email,users)
-
-
-    create_menu(userlogado)
-    # if user["email"] == "admin@gmail.com":
-    #     palavraPass = input("Introdua a sua palavra pass:")
-    #     #vai verificar se a palavra pass introduzida é igual a que está guardada na lista de utilizadores em Admin
-    #     if palavraPass not in {"password"}: 
-    #         print("Palavra pass errada tente novamente")
-    #     if palavraPass == user["password"]:
-    #         print(menu_admin)
+    if userlogado["permission"] == "cliente":
+        menu_client(userlogado)
+    else:
+        palavraPass = input("Introdua a sua palavra pass:")
+        #vai verificar se a palavra pass introduzida é igual a que está guardada na lista de utilizadores em Admin
+        if palavraPass == userlogado["password"]: 
+            menu_admin(userlogado)
+        else: 
+            print("Palavra pass errada tente novamente")
 
         #adiciona o email a lista de users e ve se é admin ou cliente
     
@@ -84,7 +83,7 @@ def conta(adultos,criancas):
     criancastemp = criancas * 12
     return adultostemp + criancastemp
 
-def create_menu(user):
+def menu_client(user):
     while True:
         print("\nMenu do Cliente:")
         print("1-Marcar Refeição")
