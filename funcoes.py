@@ -62,25 +62,23 @@ def make_reservation(user):
     listReservations = load("reservation.json")
     reserva = {"nome":nome,"nif":nif,"data":data,"hora":hora,"adultos":adultos,"criancas":criancas}
     listReservations += [reserva]
-    show_reservation(reserva)
+    show_reservation(reserva, False)
+    print("       Dados de faturação:")
+    print()
+    print("Nome: " + nome + " com NIF:" + nif)
+    print("\nTotal a pagar:" +  str(conta(reserva['adultos'],reserva['criancas'] )))
     confirmacao = input("Deseja confirmar a reserva? s/n: ")
     if confirmacao.lower() == "s":
         save(listReservations,"reservation.json")
 
     
-
-
-
-
-
-
 def show_history(user):
     listReservations = load("reservation.json")
     print(listReservations)
     for reserva in listReservations:
-        show_reservation(reserva)
+        show_reservation(reserva,True)
 
-def show_reservation(reserva):
+def show_reservation(reserva, show_total):
     print(100 * "*")
     print()
     print("Data: " + reserva['data'],"\tHora: " + reserva['hora'])
@@ -89,8 +87,9 @@ def show_reservation(reserva):
     print("Adultos: "+ str(reserva['adultos']),"\tCrianças: " + str(reserva['criancas']),"\tTotal de pessoas: " + str(totalpessoas) )
     print("Nome: " + reserva['nome'], "\tNIF: "+ reserva['nif'])
     print()
-    print("Total a pagar:" + str(conta(reserva['adultos'],reserva['criancas'])))
-    print()
+    if show_total == True:
+        print("Total a pagar:" + str(conta(reserva['adultos'],reserva['criancas'])))
+        print()
 
 
 
@@ -119,9 +118,7 @@ def menu_client(user):
         else:
             print("Opção invalida")  
 
-#def fatura(user):
-    #nome = input("indique o seu nome: ")
-    #nif = input("Introduza o seu NIF: ")
+    
 
 def menu_admin(admin):
      while True:
@@ -167,7 +164,7 @@ def  total_close_day():
     print()
     for reserva in reservas:
         if data == reserva["data"]:
-            show_reservation(reserva)
+            show_reservation(reserva, True)
             estatistica(data)
             temreserva = True
     if temreserva == False:
