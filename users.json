@@ -23,5 +23,10 @@
         "email": "aurelio@gmail.com",
         "password": "",
         "permission": "cliente"
+    },
+    {
+        "email": "aurelio",
+        "password": "",
+        "permission": "cliente"
     }
 ]

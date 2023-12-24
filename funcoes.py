@@ -66,7 +66,7 @@ def make_reservation(user):
     print("       Dados de faturação:")
     print()
     print("Nome: " + nome + " com NIF:" + nif)
-    print("\nTotal a pagar:" +  str(conta(reserva['adultos'],reserva['criancas'] )))
+    print("\nTotal a pagar:" +  euros(conta(reserva['adultos'],reserva['criancas'] )))
     confirmacao = input("Deseja confirmar a reserva? s/n: ")
     if confirmacao.lower() == "s":
         save(listReservations,"reservation.json")
@@ -89,17 +89,18 @@ def show_reservation(reserva, show_total):
     print("Nome: " + reserva['nome'], "\tNIF: "+ reserva['nif'])
     print()
     if show_total == True:
-        print("Total a pagar:" + str(conta(reserva['adultos'],reserva['criancas'])))
+        print("Total a pagar: " + euros(conta(reserva['adultos'],reserva['criancas'])))
         print()
 
 
-
+def euros(valor):
+    return "%.2f" % valor + "€"
 
 def conta(adultos,criancas):
     adultostemp = 0
     criancastemp = 0
     adultostemp = adultos * 25
-    criancastemp = criancas * 12
+    criancastemp = criancas * 12.5
     return adultostemp + criancastemp
 
 def menu_client(user):
@@ -187,7 +188,7 @@ def estatistica(data):
             totaladultos += reserva["adultos"]
             totalcriancas += reserva["criancas"]
     print("Estatistica")
-    print("Total faturado: "+ str(total))
+    print("Total faturado: "+ euros(total))
     print("\nTotal de adultos: "+ str(totaladultos))
     print("\nTotal de criancas: "+ str(totalcriancas))
     print("\nTotal de pessoas: "+ str(totalpessoas))

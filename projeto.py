@@ -1,4 +1,4 @@
-from funcoes import login,adicionar_usuario,load,menu_client,make_reservation, show_client_history,menu_admin,show_close_days,view_closing_days,conta,total_close_day
+from funcoes import login,adicionar_usuario,load,menu_client,make_reservation, show_client_history,menu_admin,show_close_days,view_closing_days,conta,total_close_day,euros
 
 
 
@@ -8,6 +8,7 @@ from funcoes import login,adicionar_usuario,load,menu_client,make_reservation, s
 listUsers = load("users.json")
 #print(listUsers)
 user = listUsers[0]
+#print(euros(1))
 login()
 # adicionar_usuario(listUsers)
 #create_menu(user)                NAO EXISTE
