@@ -68,17 +68,23 @@ def show_history(user):
     listReservations = load("reservation.json")
     print(listReservations)
     for reserva in listReservations:
-        print(100 * "*")
-        print()
-        print("Data: " + reserva['data'],"\tHora: " + reserva['hora'])
-        print()
-        totalpessoas = reserva['adultos'] + reserva['criancas']
-        print("Adultos: "+ str(reserva['adultos']),"\tCrianças: " + str(reserva['criancas']),"\tTotal de pessoas: " + str(totalpessoas) )
-        print("Nome: " + reserva['nome'], "\tNIF: "+ reserva['nif'])
-        print()
-        print("Total a pagar:" + str(conta(reserva['adultos'],reserva['criancas'])))
-        print()
-    
+        show_reservation(reserva)
+
+def show_reservation(reserva):
+    print(100 * "*")
+    print()
+    print("Data: " + reserva['data'],"\tHora: " + reserva['hora'])
+    print()
+    totalpessoas = reserva['adultos'] + reserva['criancas']
+    print("Adultos: "+ str(reserva['adultos']),"\tCrianças: " + str(reserva['criancas']),"\tTotal de pessoas: " + str(totalpessoas) )
+    print("Nome: " + reserva['nome'], "\tNIF: "+ reserva['nif'])
+    print()
+    print("Total a pagar:" + str(conta(reserva['adultos'],reserva['criancas'])))
+    print()
+
+
+
+
 def conta(adultos,criancas):
     adultostemp = 0
     criancastemp = 0
@@ -93,7 +99,7 @@ def menu_client(user):
         print("2-Ver Historico")
         print("3-Sair")
 
-        opcao = input("Escolha uma opção")
+        opcao = input("Escolha uma opção: ")
         if opcao == "1":
             make_reservation(user)
         elif opcao == "2":
@@ -103,21 +109,21 @@ def menu_client(user):
         else:
             print("Opção invalida")  
 
-def fatura(user):
-    nome = input("indique o seu nome: ")
-    nif = input("Introduza o seu NIF: ")
+#def fatura(user):
+    #nome = input("indique o seu nome: ")
+    #nif = input("Introduza o seu NIF: ")
 
 def menu_admin(admin):
      while True:
         print("\nMenu do Administrador:")
         print("1. Definições")
-        print("2. Fecho do dia")
-        print("3. Extrato de reservas por dia")
+        print("2. Dias Fechados")
+        print("3. Extrato de reservas por dia")  #mostrar as reservas feitas 
         print("4. Sair")
 
         opcao = input("Escolha uma opção: ")
         if opcao == "1":
-           print("Preço por Adulto: 25")
+           print("\nPreço por Adulto: 25")
            print("Preço por Criança: 12.5")
            print("Ocupação Máxima: 64")
            print("Número de Mesas: 16")
@@ -128,7 +134,7 @@ def menu_admin(admin):
         elif opcao == '2':
             show_close_days()  
         elif opcao == '3':
-            total_close_day(admin)
+            total_close_day()
         elif opcao == '4':
             break
         else:
@@ -142,13 +148,43 @@ def show_close_days():
         print(dia)
     input("Prima uma tecla qualquer para voltar")
     
-def  total_close_day(adultos,criancas,admin):
-    adultostemp = 0
-    criancatemp = 0
-    adultostemp += adultos
-    criancatemp += criancas
+def  total_close_day():
+    reservas = load("reservation.json")
+    print()
+    data = input("Introduza o dia que deseja ver: ")
+    temreserva = False
+    print("\nReservas adicionadas no dia "+ data)
+    print()
+    for reserva in reservas:
+        if data == reserva["data"]:
+            show_reservation(reserva)
+            estatistica(data)
+            temreserva = True
+    if temreserva == False:
+        print("Não existe nenhuma reserva para esta data")
+        print()    
+    input("Prima uma tecla qualquer para voltar")
 
-#vai as reservas e v~e quantos adultos e crianças foram e soma tudo 
+def estatistica(data):
+    reservas = load("reservation.json") 
+    total = 0
+    totalpessoas = 0
+    totaladultos = 0
+    totalcriancas = 0
+   
+    for reserva in reservas :
+        if reserva["data"] == data:
+            total += conta(reserva["adultos"], reserva["criancas"]) 
+            totalpessoas += reserva["adultos"] + reserva["criancas"]
+            totaladultos += reserva["adultos"]
+            totalcriancas += reserva["criancas"]
+    print("Estatistica")
+    print("Total faturado: "+ str(total))
+    print("\nTotal de adultos: "+ str(totaladultos))
+    print("\nTotal de criancas: "+ str(totalcriancas))
+    print("\nTotal de pessoas: "+ str(totalpessoas))
+    input("Prima uma tecla qualquer para voltar")
+    #vai as reservas e ve quantos adultos e crianças foram e soma tudo 
 
 def view_closing_days(data,file_name):
     with open(file_name, 'w') as file:

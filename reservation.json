@@ -6,5 +6,21 @@
         "hora": "19:30",
         "adultos": 4,
         "criancas": 2
+    },
+    {
+        "nome": "diogo",
+        "nif": "13312",
+        "data": "2024-07-22",
+        "hora": "19:00",
+        "adultos": 4,
+        "criancas": 7
+    },
+    {
+        "nome": "aurelio",
+        "nif": "156777772",
+        "data": "2024-07-22",
+        "hora": "18:00",
+        "adultos": 2,
+        "criancas": 2
     }
 ]
