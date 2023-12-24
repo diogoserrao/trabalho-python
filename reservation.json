@@ -1,58 +1,29 @@
 [
     {
         "nome": "diogo",
-        "nif": "12331",
+        "nif": "6455235",
         "data": "2023-12-23",
-        "hora": "19:30",
-        "adultos": 4,
-        "criancas": 2
+        "hora": "18:00",
+        "adultos": 7,
+        "criancas": 3,
+        "email": "diogo@gmail.com"
     },
     {
-        "nome": "diogo",
-        "nif": "13312",
-        "data": "2024-07-22",
+        "nome": "Serrao",
+        "nif": "533544",
+        "data": "2023-08-24",
         "hora": "19:00",
-        "adultos": 4,
-        "criancas": 7
-    },
-    {
-        "nome": "aurelio",
-        "nif": "156777772",
-        "data": "2024-07-22",
-        "hora": "18:00",
-        "adultos": 2,
-        "criancas": 2
-    },
-    {
-        "nome": "aurelio",
-        "nif": "321313",
-        "data": "2002-07-13",
-        "hora": "22:00",
-        "adultos": 4,
-        "criancas": 0
-    },
-    {
-        "nome": "diogo",
-        "nif": "3144142",
-        "data": "2023-09-08",
-        "hora": "23",
         "adultos": 5,
-        "criancas": 1
+        "criancas": 4,
+        "email": "diogo@gmail.com"
     },
     {
-        "nome": "diogo",
-        "nif": "3423525452",
-        "data": "2023-08-09",
-        "hora": "22:00",
-        "adultos": 8,
-        "criancas": 3
-    },
-    {
-        "nome": "diogo",
-        "nif": "132312313",
-        "data": "2023-04-23",
-        "hora": "18:00",
-        "adultos": 4,
-        "criancas": 9
+        "nome": "surelio",
+        "nif": "533544",
+        "data": "2023-08-24",
+        "hora": "19:00",
+        "adultos": 5,
+        "criancas": 4,
+        "email": "aurelio@gmail.com"
     }
 ]

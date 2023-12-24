@@ -60,7 +60,7 @@ def make_reservation(user):
     criancas = int(input ("Quantas crianças são: "))
     #validar hora
     listReservations = load("reservation.json")
-    reserva = {"nome":nome,"nif":nif,"data":data,"hora":hora,"adultos":adultos,"criancas":criancas}
+    reserva = {"nome":nome,"nif":nif,"data":data,"hora":hora,"adultos":adultos,"criancas":criancas,"email":user["email"]}
     listReservations += [reserva]
     show_reservation(reserva, False)
     print("       Dados de faturação:")
@@ -72,11 +72,12 @@ def make_reservation(user):
         save(listReservations,"reservation.json")
 
     
-def show_history(user):
+def show_client_history(user):
     listReservations = load("reservation.json")
     print(listReservations)
     for reserva in listReservations:
-        show_reservation(reserva,True)
+        if reserva["email"] == user["email"]:
+            show_reservation(reserva,True)
 
 def show_reservation(reserva, show_total):
     print(100 * "*")
@@ -112,7 +113,7 @@ def menu_client(user):
         if opcao == "1":
             make_reservation(user)
         elif opcao == "2":
-            show_history(user)
+            show_client_history(user)
         elif opcao == "3":
             break
         else:
