@@ -60,9 +60,19 @@ def make_reservation(user):
     criancas = int(input ("Quantas crianças são: "))
     #validar hora
     listReservations = load("reservation.json")
-    reserva = [{"nome":nome,"nif":nif,"data":data,"hora":hora,"adultos":adultos,"criancas":criancas}]
-    listReservations += reserva
-    save(listReservations,"reservation.json")
+    reserva = {"nome":nome,"nif":nif,"data":data,"hora":hora,"adultos":adultos,"criancas":criancas}
+    listReservations += [reserva]
+    show_reservation(reserva)
+    confirmacao = input("Deseja confirmar a reserva? s/n: ")
+    if confirmacao.lower() == "s":
+        save(listReservations,"reservation.json")
+
+    
+
+
+
+
+
 
 def show_history(user):
     listReservations = load("reservation.json")

@@ -22,5 +22,21 @@
         "hora": "18:00",
         "adultos": 2,
         "criancas": 2
+    },
+    {
+        "nome": "aurelio",
+        "nif": "321313",
+        "data": "2002-07-13",
+        "hora": "22:00",
+        "adultos": 4,
+        "criancas": 0
+    },
+    {
+        "nome": "diogo",
+        "nif": "3144142",
+        "data": "2023-09-08",
+        "hora": "23",
+        "adultos": 5,
+        "criancas": 1
     }
 ]

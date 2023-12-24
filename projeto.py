@@ -8,7 +8,7 @@ from funcoes import login,adicionar_usuario,load,menu_client,make_reservation, s
 listUsers = load("users.json")
 #print(listUsers)
 user = listUsers[0]
-#login()
+login()
 # adicionar_usuario(listUsers)
 #create_menu(user)                NAO EXISTE
 #make_reservation(user)
@@ -16,6 +16,6 @@ user = listUsers[0]
 #fatura(user)
 #menu_admin(user)
 #show_close_days()
-total_close_day()
+#total_close_day()
 # view_closing_days("close_days.json")
 #print(close_days(admin):)

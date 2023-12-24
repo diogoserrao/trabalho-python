@@ -18,5 +18,10 @@
         "email": "& C:/Users/diogo/AppData/Local/Programs/Python/Python310/python.exe c:/Users/diogo/Code/github/trabalho-python/projeto.py",
         "password": "",
         "permission": "cliente"
+    },
+    {
+        "email": "aurelio@gmail.com",
+        "password": "",
+        "permission": "cliente"
     }
 ]
