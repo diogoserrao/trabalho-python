@@ -28,5 +28,15 @@
         "email": "aurelio",
         "password": "",
         "permission": "cliente"
+    },
+    {
+        "email": "antonio@gmail.com",
+        "password": "",
+        "permission": "cliente"
+    },
+    {
+        "email": "pedro@gmail.com",
+        "password": "",
+        "permission": "cliente"
     }
 ]

@@ -16,9 +16,7 @@ def save(lista,filename):
             json.dump(lista,f,indent=4)
     except:
         print("\n nao foi possivel abrir o ficheiro")       
-    else:
-        print("\nFicheiro escrito com sucesso!")
-
+    
 def login():
     email = input("Introduza o seu email:")
     users = load("users.json")
@@ -74,7 +72,7 @@ def make_reservation(user):
     
 def show_client_history(user):
     listReservations = load("reservation.json")
-    print(listReservations)
+    
     for reserva in listReservations:
         if reserva["email"] == user["email"]:
             show_reservation(reserva,True)

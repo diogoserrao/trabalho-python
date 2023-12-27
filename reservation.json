@@ -34,5 +34,23 @@
         "adultos": 4,
         "criancas": 3,
         "email": "diogo@gmail.com"
+    },
+    {
+        "nome": "antonio",
+        "nif": "463942",
+        "data": "2024-09-15",
+        "hora": "18:30",
+        "adultos": 5,
+        "criancas": 1,
+        "email": "antonio@gmail.com"
+    },
+    {
+        "nome": "pedro",
+        "nif": "342532534",
+        "data": "2024-09-07",
+        "hora": "19:30",
+        "adultos": 5,
+        "criancas": 1,
+        "email": "pedro@gmail.com"
     }
 ]
