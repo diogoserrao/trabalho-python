@@ -13,11 +13,7 @@ def menu_admin(admin):
 
         opcao = input("Escolha uma opção: ")
         if opcao == "1":
-            print("\nPreço por Adulto: 25")
-            print("Preço por Criança: 12.5")
-            print("Ocupação Máxima: 64")
-            print("Número de Mesas: 16")
-            print("Dia de Folga: Quarta-Feira")
+            show_definitions()
             espera_utilizador()
             # o programa devia voltar para cima a mostrar o menu de admin
 
@@ -31,6 +27,13 @@ def menu_admin(admin):
             print("Opção inválida. Tente novamente.")
 # faz print das datas em que o rstaurante esta fechado
 
+def show_definitions():
+    defenicoes = load("definitions.json")
+    print("\nPreço por Adulto: " + str(defenicoes["preco_adulto"]))
+    print("Preço por Criança: " + str(defenicoes["preco_crianca"]))
+    print("Ocupação Máxima: " + str(defenicoes["ocupacao_maxima"]))
+    print("Número de Mesas: " + str(defenicoes["numero_mesas"]))
+    print("Dia de Folga: " + defenicoes["dia_folga"])
 
 def show_close_days():
     days = load("closedays.json")

@@ -61,5 +61,14 @@
         "adultos": 2,
         "criancas": 1,
         "email": "joao@gmail.com"
+    },
+    {
+        "nome": "Aurelio",
+        "nif": "123456",
+        "data": "2023-01-02",
+        "hora": "16:00",
+        "adultos": 4,
+        "criancas": 7,
+        "email": "aurelio@gmail.com"
     }
 ]
