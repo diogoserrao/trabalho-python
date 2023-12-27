@@ -68,5 +68,10 @@
         "email": "admin@gmial.com",
         "password": "",
         "permission": "cliente"
+    },
+    {
+        "email": "nati@gmail.com",
+        "password": "",
+        "permission": "cliente"
     }
 ]

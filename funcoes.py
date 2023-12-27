@@ -49,10 +49,11 @@ def euros(valor):
 
 
 def conta(adultos, criancas):
+    defenicoes = load("definitions.json")
     adultostemp = 0
     criancastemp = 0
-    adultostemp = adultos * 25
-    criancastemp = criancas * 12.5
+    adultostemp = adultos * defenicoes["preco_adulto"]
+    criancastemp = criancas * defenicoes["preco_crianca"]
     return adultostemp + criancastemp
 
 def limpar_tela():
