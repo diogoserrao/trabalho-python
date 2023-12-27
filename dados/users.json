@@ -73,5 +73,20 @@
         "email": "nati@gmail.com",
         "password": "",
         "permission": "cliente"
+    },
+    {
+        "email": "adadsd@gmail.com",
+        "password": "",
+        "permission": "cliente"
+    },
+    {
+        "email": "sdfs",
+        "password": "",
+        "permission": "cliente"
+    },
+    {
+        "email": "sdfsd",
+        "password": "",
+        "permission": "cliente"
     }
 ]

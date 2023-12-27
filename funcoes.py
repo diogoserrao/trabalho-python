@@ -4,7 +4,7 @@ from os import system,name
 
 def load(filename):
     try:
-        with open(filename, 'r') as f:
+        with open("dados/"+filename, 'r') as f:
             data = json.load(f)
     except:
         print("\nErro: não foi possível abrir o ficheiro")
@@ -15,7 +15,7 @@ def load(filename):
 
 def save(lista, filename):
     try:
-        with open(filename, "w") as f:
+        with open("dados/"+filename, "w") as f:
             json.dump(lista, f, indent=4)
     except:
         print("\n nao foi possivel abrir o ficheiro")
