@@ -43,5 +43,25 @@
         "email": "joao@gmail.com",
         "password": "",
         "permission": "cliente"
+    },
+    {
+        "email": "jota@gmail.com",
+        "password": "",
+        "permission": "cliente"
+    },
+    {
+        "email": "cesar@gmail.com",
+        "password": "",
+        "permission": "cliente"
+    },
+    {
+        "email": "artur@gmail.com",
+        "password": "",
+        "permission": "cliente"
+    },
+    {
+        "email": "idia@gmail.com",
+        "password": "",
+        "permission": "cliente"
     }
 ]

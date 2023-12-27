@@ -1,5 +1,5 @@
 import json
-from funcoes import load, show_reservation, conta, euros
+from funcoes import load, show_reservation, conta, euros, espera_utilizador
 
 
 def menu_admin(admin):
@@ -17,7 +17,7 @@ def menu_admin(admin):
             print("Ocupação Máxima: 64")
             print("Número de Mesas: 16")
             print("Dia de Folga: Quarta-Feira")
-            input("Prima uma tecla qualquer para voltar")
+            espera_utilizador()
             # o programa devia voltar para cima a mostrar o menu de admin
 
         elif opcao == '2':
@@ -36,7 +36,7 @@ def show_close_days():
     print()
     for dia in days:
         print(dia)
-    input("Prima uma tecla qualquer para voltar")
+    espera_utilizador()
 
 
 def total_close_day():
@@ -54,7 +54,7 @@ def total_close_day():
     if temreserva == False:
         print("Não existe nenhuma reserva para esta data")
         print()
-    input("Prima uma tecla qualquer para voltar")
+    espera_utilizador()
 
 
 def estatistica(data):
@@ -75,7 +75,7 @@ def estatistica(data):
     print("\nTotal de adultos: " + str(totaladultos))
     print("\nTotal de criancas: " + str(totalcriancas))
     print("\nTotal de pessoas: " + str(totalpessoas))
-    input("Prima uma tecla qualquer para voltar")
+    espera_utilizador()
     # vai as reservas e ve quantos adultos e crianças foram e soma tudo
 
 

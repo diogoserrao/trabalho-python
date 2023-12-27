@@ -1,4 +1,4 @@
-from funcoes import show_reservation, euros, conta, load, save
+from funcoes import show_reservation, euros, conta, load, save, limpar_tela,espera_utilizador
 
 
 def make_reservation(user):
@@ -27,6 +27,7 @@ def make_reservation(user):
 
 def menu_client(user):
     while True:
+        limpar_tela()
         print("\nMenu do Cliente:")
         print("1-Marcar Refeição")
         print("2-Ver Historico")
@@ -49,3 +50,4 @@ def show_client_history(user):
     for reserva in listReservations:
         if reserva["email"] == user["email"]:
             show_reservation(reserva, True)
+    espera_utilizador()

@@ -1,4 +1,5 @@
 import json
+from os import system,name
 
 
 def load(filename):
@@ -53,3 +54,13 @@ def conta(adultos, criancas):
     adultostemp = adultos * 25
     criancastemp = criancas * 12.5
     return adultostemp + criancastemp
+
+def limpar_tela():
+    if name == 'nt':
+       system('cls')
+    else:
+       system('clear')
+
+
+def espera_utilizador():
+    input("Prima uma tecla qualquer para voltar")
