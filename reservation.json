@@ -52,5 +52,14 @@
         "adultos": 5,
         "criancas": 1,
         "email": "pedro@gmail.com"
+    },
+    {
+        "nome": "joao",
+        "nif": "3123123",
+        "data": "2023-08-04",
+        "hora": "18:00",
+        "adultos": 2,
+        "criancas": 1,
+        "email": "joao@gmail.com"
     }
 ]

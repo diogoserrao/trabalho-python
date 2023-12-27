@@ -38,5 +38,10 @@
         "email": "pedro@gmail.com",
         "password": "",
         "permission": "cliente"
+    },
+    {
+        "email": "joao@gmail.com",
+        "password": "",
+        "permission": "cliente"
     }
 ]
