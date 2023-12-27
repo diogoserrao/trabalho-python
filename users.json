@@ -63,5 +63,10 @@
         "email": "idia@gmail.com",
         "password": "",
         "permission": "cliente"
+    },
+    {
+        "email": "admin@gmial.com",
+        "password": "",
+        "permission": "cliente"
     }
 ]

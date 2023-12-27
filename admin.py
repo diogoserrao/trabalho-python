@@ -1,9 +1,10 @@
 import json
-from funcoes import load, show_reservation, conta, euros, espera_utilizador
+from funcoes import load, show_reservation, conta, euros, espera_utilizador, save, limpar_tela
 
 
 def menu_admin(admin):
     while True:
+        limpar_tela()
         print("\nMenu do Administrador:")
         print("1. Definições")
         print("2. Dias Fechados")
@@ -36,7 +37,14 @@ def show_close_days():
     print()
     for dia in days:
         print(dia)
+    resposta = input("Deseja acrescentar agluma data? s/n: ")
+    if resposta.lower() == "s":
+        data_adicionada = input("Introduza a data no formato aaaa-mm-dd: ")
+        days += [data_adicionada]
+        save(days,"closedays.json")
+
     espera_utilizador()
+
 
 
 def total_close_day():
