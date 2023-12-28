@@ -2,7 +2,7 @@ import json
 from funcoes import load, show_reservation, conta, euros, espera_utilizador, save, limpar_tela
 
 
-def menu_admin(admin):
+def menu_admin():
     while True:
         limpar_tela()
         print("\nMenu do Administrador:")

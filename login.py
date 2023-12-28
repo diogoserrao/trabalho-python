@@ -1,6 +1,5 @@
-from funcoes import load,adicionar_usuario
-from cliente import menu_client
-from admin import menu_admin
+from funcoes import load, adicionar_usuario
+
 
 def login():
     email = input("Introduza o seu email:")
@@ -12,14 +11,15 @@ def login():
             userlogado = user
     if userlogado == None:
         userlogado = adicionar_usuario(email, users)
+
     if userlogado["permission"] == "cliente":
-        menu_client(userlogado)
+        return userlogado
     else:
         palavraPass = ""
         while palavraPass != userlogado["password"]:
             palavraPass = input("Introdua a sua palavra pass:")
             # vai verificar se a palavra pass introduzida é igual a que está guardada na lista de utilizadores em Admin
             if palavraPass == userlogado["password"]:
-                menu_admin(userlogado)
+                return userlogado
             else:
                 print("Palavra pass errada tente novamente")
