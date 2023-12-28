@@ -1,5 +1,5 @@
 import json
-from funcoes import load, show_reservation, conta, euros, espera_utilizador, save, limpar_tela
+from funcoes import load, show_reservation, conta, euros, espera_utilizador, save, limpar_tela, pedir_data_valida
 
 
 def menu_admin():
@@ -42,7 +42,7 @@ def show_close_days():
         print(dia)
     resposta = input("Deseja acrescentar agluma data? s/n: ")
     if resposta.lower() == "s":
-        data_adicionada = input("Introduza a data no formato aaaa-mm-dd: ")
+        data_adicionada = pedir_data_valida()
         days += [data_adicionada]
         save(days,"closedays.json")
 
@@ -53,15 +53,15 @@ def show_close_days():
 def total_close_day():
     reservas = load("reservation.json")
     print()
-    data = input("Introduza o dia que deseja ver: ")
+    data = pedir_data_valida()
     temreserva = False
     print("\nReservas adicionadas no dia " + data)
     print()
     for reserva in reservas:
         if data == reserva["data"]:
             show_reservation(reserva, True)
-            estatistica(data)
             temreserva = True
+    estatistica(data)         
     if temreserva == False:
         print("Não existe nenhuma reserva para esta data")
         print()
@@ -86,7 +86,6 @@ def estatistica(data):
     print("\nTotal de adultos: " + str(totaladultos))
     print("\nTotal de criancas: " + str(totalcriancas))
     print("\nTotal de pessoas: " + str(totalpessoas))
-    espera_utilizador()
     # vai as reservas e ve quantos adultos e crianças foram e soma tudo
 
 

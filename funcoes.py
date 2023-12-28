@@ -1,4 +1,5 @@
 import json
+import datetime
 from os import system,name
 
 
@@ -65,3 +66,18 @@ def limpar_tela():
 
 def espera_utilizador():
     input("Prima uma tecla qualquer para voltar")
+
+def pedir_data_valida ():
+    data = ""
+    while True:
+        data = input("Introduza a data no formato aaaa-mm-dd: ")
+        
+        try:
+            # Tenta converter a string de data para um objeto datetime
+            datetime.datetime.strptime(data, "%Y-%m-%d")
+            # Se a conversão for bem-sucedida, a data está no formato correto
+            break
+        except ValueError:
+            print("Formato de data inválido. Por favor, introduza novamente.\n")
+
+    return data

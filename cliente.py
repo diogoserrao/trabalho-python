@@ -1,5 +1,5 @@
-from funcoes import show_reservation, euros, conta, load, save, limpar_tela,espera_utilizador
-import datetime
+from funcoes import show_reservation, euros, conta, load, save, limpar_tela,espera_utilizador,pedir_data_valida
+
 
 def make_reservation(user):
     listReservations = load("reservation.json")
@@ -28,7 +28,7 @@ def pedir_data(email):
     pedenovamente = True
     data = ""
     while pedenovamente == True:
-        data = pedir_data_valida(data)
+        data = pedir_data_valida()
         #data = input("Introduza outra data no formato aaaa-mm-dd: ")
         valido = True
         for reserva in listReservations:
@@ -41,19 +41,6 @@ def pedir_data(email):
             pedenovamente = False
     return data
 
-def pedir_data_valida (data):
-    while True:
-        data = input("Introduza a data no formato aaaa-mm-dd: ")
-        
-        try:
-            # Tenta converter a string de data para um objeto datetime
-            datetime.datetime.strptime(data, "%Y-%m-%d")
-            # Se a conversão for bem-sucedida, a data está no formato correto
-            break
-        except ValueError:
-            print("Formato de data inválido. Por favor, introduza novamente.\n")
-
-    return data
 
 
 
