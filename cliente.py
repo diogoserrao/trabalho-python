@@ -5,7 +5,7 @@ def make_reservation(user):
     listReservations = load("reservation.json")
     nome = input("Introduza o seu nome: ")
     nif = input("Introduza o seu NIF: ")
-    data = pedir_data(nome)
+    data = pedir_data(user["email"])
     print("Horario: 18:00h as 23:00")
     hora = input("Introduza a hora prevista de chegada no formato hh:mm: ")
     adultos = int(input("Quantos adultos são: "))
@@ -23,7 +23,7 @@ def make_reservation(user):
     if confirmacao.lower() == "s":
         save(listReservations, "reservation.json")
 
-def pedir_data(nome):
+def pedir_data(email):
     listReservations = load("reservation.json")
     pedenovamente = True
     data = ""
@@ -31,7 +31,7 @@ def pedir_data(nome):
         data = input("Introduza outra data no formato aaaa-mm-dd: ")
         valido = True
         for reserva in listReservations:
-            if data == reserva["data"] and nome == reserva["nome"]: 
+            if data == reserva["data"] and email == reserva["email"]: 
                 print("Ja existe uma marcação para esta data\n")
                
                 valido = False
