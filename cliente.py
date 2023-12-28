@@ -2,15 +2,14 @@ from funcoes import show_reservation, euros, conta, load, save, limpar_tela,espe
 
 
 def make_reservation(user):
+    listReservations = load("reservation.json")
     nome = input("Introduza o seu nome: ")
     nif = input("Introduza o seu NIF: ")
-    data = input("Introduza a data no formato aaaa-mm-dd: ")
+    data = pedir_data(nome)
     print("Horario: 18:00h as 23:00")
     hora = input("Introduza a hora prevista de chegada no formato hh:mm: ")
     adultos = int(input("Quantos adultos são: "))
-    criancas = int(input("Quantas crianças são: "))
-    # validar hora
-    listReservations = load("reservation.json")
+    criancas = int(input("Quantas crianças são: "))     
     reserva = {"nome": nome, "nif": nif, "data": data, "hora": hora,
                "adultos": adultos, "criancas": criancas, "email": user["email"]}
     listReservations += [reserva]
@@ -24,6 +23,22 @@ def make_reservation(user):
     if confirmacao.lower() == "s":
         save(listReservations, "reservation.json")
 
+def pedir_data(nome):
+    listReservations = load("reservation.json")
+    pedenovamente = True
+    data = ""
+    while pedenovamente == True:
+        data = input("Introduza outra data no formato aaaa-mm-dd: ")
+        valido = True
+        for reserva in listReservations:
+            if data == reserva["data"] and nome == reserva["nome"]: 
+                print("Ja existe uma marcação para esta data\n")
+               
+                valido = False
+                break   
+        if valido == True:
+            pedenovamente = False
+    return data
 
 def menu_client(user):
     while True:

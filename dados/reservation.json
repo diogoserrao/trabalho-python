@@ -70,5 +70,23 @@
         "adultos": 4,
         "criancas": 7,
         "email": "aurelio@gmail.com"
+    },
+    {
+        "nome": "diogo",
+        "nif": "244123",
+        "data": "2023-09-12",
+        "hora": "19:00",
+        "adultos": 4,
+        "criancas": 3,
+        "email": "diogo@gmail.com"
+    },
+    {
+        "nome": "diogo",
+        "nif": "123123",
+        "data": "2024-08-27",
+        "hora": "19:00",
+        "adultos": 4,
+        "criancas": 3,
+        "email": "diogo@gmail.com"
     }
 ]
