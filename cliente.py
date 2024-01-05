@@ -4,7 +4,7 @@ from datetime import datetime,date
 def make_reservation(user):
     listReservations = load("reservation.json")
     nome = input("Introduza o seu nome: ")
-    nif = input("Introduza o seu NIF: ")
+    nif = pedir_nif()
     # Verificação da data que nao pode ser numa quarta feira
     data = pedir_data(user["email"])
     print("Horario: 18:00h as 23:00h")
@@ -49,7 +49,15 @@ def pedir_horas():
         
         print("Formato de hora inválido. Por favor, introduza novamente.\n")
         
-    
+def pedir_nif():
+    nif = ""
+    while True:
+        nif = input("Introduza o seu NIF: ")
+        if nif.isdigit() and len(nif) == 9:
+            return nif
+
+        print("Formato de hora inválido. Por favor, introduza novamente.\n")
+
 
 
 def pedir_data(email):
