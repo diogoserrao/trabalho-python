@@ -1,13 +1,15 @@
 from funcoes import show_reservation, euros, conta, load, save, limpar_tela,espera_utilizador,pedir_data_valida
-
+from datetime import datetime,date
 
 def make_reservation(user):
     listReservations = load("reservation.json")
     nome = input("Introduza o seu nome: ")
     nif = input("Introduza o seu NIF: ")
+    # Verificação da data que nao pode ser numa quarta feira
     data = pedir_data(user["email"])
-    print("Horario: 18:00h as 23:00")
-    hora = input("Introduza a hora prevista de chegada no formato hh:mm: ")
+    print("Horario: 18:00h as 23:00h")
+    #hora = input("Introduza a hora prevista de chegada no formato hh:mm: ")
+    hora = pedir_horas()
     adultos = int(input("Quantos adultos são: "))
     criancas = int(input("Quantas crianças são: "))     
     reserva = {"nome": nome, "nif": nif, "data": data, "hora": hora,
@@ -22,6 +24,33 @@ def make_reservation(user):
     confirmacao = input("Deseja confirmar a reserva? s/n: ")
     if confirmacao.lower() == "s":
         save(listReservations, "reservation.json")
+
+
+def verificacao_do_dia ():
+    diaFechado = 2
+    diaAtual = datetime.now()
+    if diaAtual.weekday() == diaFechado:
+        print("Restaurante fechado")
+    else:
+        print("data valida")
+
+    
+def pedir_horas():
+    hora_introduzida = ""
+    while True:
+        hora_introduzida = input("Introduza a hora prevista de chegada no formato hh:mm: ")
+
+        partes = hora_introduzida.split(':')    
+        if len(partes) == 2:
+            hora, minutos = partes
+            if hora.isdigit() and minutos.isdigit():
+                if 18 <= int(hora) <= 23 and 0 <= int(minutos) <= 59:
+                    return hora_introduzida
+        
+        print("Formato de hora inválido. Por favor, introduza novamente.\n")
+        
+    
+
 
 def pedir_data(email):
     listReservations = load("reservation.json")
