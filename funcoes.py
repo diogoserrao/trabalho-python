@@ -1,5 +1,5 @@
 import json
-import datetime
+from datetime import datetime, date
 from os import system,name
 
 
@@ -74,10 +74,11 @@ def pedir_data_valida ():
         
         try:
             # Tenta converter a string de data para um objeto datetime
-            datetime.datetime.strptime(data, "%Y-%m-%d")
+            datetime.strptime(data, "%Y-%m-%d")
             # Se a conversão for bem-sucedida, a data está no formato correto
             break
         except ValueError:
             print("Formato de data inválido. Por favor, introduza novamente.\n")
 
     return data
+

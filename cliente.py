@@ -63,8 +63,7 @@ def pedir_data(email):
     pedenovamente = True
     data = ""
     while pedenovamente == True:
-        data = pedir_data_valida()
-        #data = input("Introduza outra data no formato aaaa-mm-dd: ")
+        data = verificacao_do_dia()
         valido = True
         for reserva in listReservations:
             if data == reserva["data"] and email == reserva["email"]: 
@@ -75,6 +74,21 @@ def pedir_data(email):
         if valido == True:
             pedenovamente = False
     return data
+
+def verificacao_do_dia():
+    while True:
+        dia_da_reserva  = pedir_data_valida()
+        diaFechado = 2 
+        data_objeto = datetime.strptime(dia_da_reserva, "%Y-%m-%d")
+        dia_da_semana = data_objeto.weekday()
+        data_atual = datetime.now().date()
+        if  dia_da_semana != diaFechado and data_objeto.date() > data_atual:
+            return dia_da_reserva
+        else:
+            print("Estamos Fechados,Escolha outro dia\n")
+            
+            
+
 
 def pedir_numero(dados):
     numero = 0

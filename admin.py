@@ -1,6 +1,6 @@
 import json
 from funcoes import load, show_reservation, conta, euros, espera_utilizador, save, limpar_tela, pedir_data_valida
-
+from datetime import datetime,date
 
 def menu_admin():
     while True:
@@ -15,7 +15,6 @@ def menu_admin():
         if opcao == "1":
             show_definitions()
             espera_utilizador()
-            # o programa devia voltar para cima a mostrar o menu de admin
 
         elif opcao == '2':
             show_close_days()
