@@ -76,16 +76,17 @@ def pedir_data(email):
     return data
 
 def verificacao_do_dia():
+    lista_de_dias_fechados = load("closedays.json")
     while True:
         dia_da_reserva  = pedir_data_valida()
         diaFechado = 2 
         data_objeto = datetime.strptime(dia_da_reserva, "%Y-%m-%d")
         dia_da_semana = data_objeto.weekday()
         data_atual = datetime.now().date()
-        if  dia_da_semana != diaFechado and data_objeto.date() > data_atual:
-            return dia_da_reserva
-        else:
-            print("Estamos Fechados,Escolha outro dia\n")
+        if  dia_da_semana != diaFechado and data_objeto.date() > data_atual  and  dia_da_reserva not in lista_de_dias_fechados:
+                return dia_da_reserva
+        
+        print("Estamos Fechados,  escolha outro dia\n")
             
             
 
