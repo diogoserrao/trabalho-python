@@ -7,11 +7,11 @@ def make_reservation(user):
     nif = pedir_nif()
     # Verificação da data que nao pode ser numa quarta feira
     data = pedir_data(user["email"])
-    print("Horario: 18:00h as 23:00h")
+    print("Horario: 18:00h as 00:00h")
     #hora = input("Introduza a hora prevista de chegada no formato hh:mm: ")
     hora = pedir_horas()
-    adultos = int(input("Quantos adultos são: "))
-    criancas = int(input("Quantas crianças são: "))     
+    adultos = pedir_numero("Quantos adultos são: ")
+    criancas = pedir_numero("Quantas criancas sao: ")    
     reserva = {"nome": nome, "nif": nif, "data": data, "hora": hora,
                "adultos": adultos, "criancas": criancas, "email": user["email"]}
     listReservations += [reserva]
@@ -56,9 +56,7 @@ def pedir_nif():
         if nif.isdigit() and len(nif) == 9:
             return nif
 
-        print("Formato de hora inválido. Por favor, introduza novamente.\n")
-
-
+        print("Formato de NIF inválido. Por favor, introduza novamente.\n")
 
 def pedir_data(email):
     listReservations = load("reservation.json")
@@ -78,7 +76,13 @@ def pedir_data(email):
             pedenovamente = False
     return data
 
-
+def pedir_numero(dados):
+    numero = 0
+    while True:
+        numero = input(dados)
+        if numero.isdigit():
+            return int(numero)
+        print(" Valores inválidos. Por favor, introduza novamente.\n")
 
 
 def menu_client(user):
